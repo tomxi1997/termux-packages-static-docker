@@ -26,7 +26,8 @@ termux_step_make() {
 
 termux_step_make_install() {
 	cd "${GOPATH}/src/github.com/opencontainers/runc"
-	install -Dm755 runc "${TERMUX_PREFIX}/bin/runc"
+	install -Dm755 runc "/data/docker/bin/runc"
+ 
 }
 
 termux_step_create_debscripts() {
