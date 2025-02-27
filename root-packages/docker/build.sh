@@ -62,7 +62,7 @@ termux_step_make() {
 	# issue the build command
 	export DOCKER_GITCOMMIT
 	export DOCKER_BUILDTAGS='exclude_graphdriver_btrfs exclude_graphdriver_devicemapper exclude_graphdriver_quota selinux exclude_graphdriver_aufs'
-	AUTO_GOPATH=1 PREFIX='' hack/make.sh dynbinary
+	AUTO_GOPATH=1 PREFIX='' hack/make.sh binaries
 	)
 	echo " Done!"
 
@@ -101,7 +101,7 @@ termux_step_make() {
 	export VERSION=v${TERMUX_PKG_VERSION}-ce
 	export DISABLE_WARN_OUTSIDE_CONTAINER=1
 	export LDFLAGS="-L ${TERMUX_PREFIX}/lib -r ${TERMUX_PREFIX}/lib"
-	make -j ${TERMUX_PKG_MAKE_PROCESSES} dynbinary
+	make -j ${TERMUX_PKG_MAKE_PROCESSES} binaries
 	unset GOOS GOARCH CGO_LDFLAGS CC CXX CFLAGS CXXFLAGS LDFLAGS
 	make -j ${TERMUX_PKG_MAKE_PROCESSES} manpages
 	)
