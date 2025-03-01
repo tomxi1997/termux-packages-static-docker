@@ -30,7 +30,7 @@ termux_step_make() {
 
 	# issue the build command
 	export BUILDTAGS=no_btrfs
-	SHIM_CGO_ENABLED=0 CGO_ENABLED=0 make -j ${TERMUX_PKG_MAKE_PROCESSES}
+	SHIM_CGO_ENABLED=1 make EXTRA_FLAGS="-buildmode pie" EXTRA_LDFLAGS='-linkmode external -extldflags "-fno-PIC -static"' BUILDTAGS="netgo osusergo no_btrfs static_build" -j ${TERMUX_PKG_MAKE_PROCESSES}
 	(unset GOOS GOARCH CGO_LDFLAGS CC CXX CFLAGS CXXFLAGS LDFLAGS
 	make CGO_ENABLED=0 -j ${TERMUX_PKG_MAKE_PROCESSES} man)
 
